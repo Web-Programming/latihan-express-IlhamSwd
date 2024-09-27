@@ -37,6 +37,8 @@ app.listen(port, () => {
 
 // Serving static file
 app.use(express.static('public'));
+
+
 // const server = http.createServer((req, res) => {
 //     res.statusCode = 200;
 //     res.setHeader('Content-Type', 'text/plain');
