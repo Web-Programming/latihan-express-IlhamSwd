@@ -10,14 +10,19 @@ require('./app_server/models/db');
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 
+// Impor modul mahasiswa router
+var mhsController = require('./app_server/routes/mahasiswa');
+
 var app = express();
 
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
 
 app.set('views', path.join(__dirname, 'app_server', 'views'));
-
 app.set('view engine', 'ejs');
+
+// daftarkan route mahasiswa
+app.use('/mahasiswa', mhsController);
 
 app.use(logger('dev'));
 app.use(express.json());
