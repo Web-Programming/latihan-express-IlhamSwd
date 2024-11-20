@@ -6,13 +6,13 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-housing-location',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule], //class="listing-available" , class="listing-location"
   template: `
       <section class="listing">
       <img class="listing-photo" [src]="housingLocation.photo" alt="Exterior photo of {{housingLocation.name}}">
       <h2 class="listing-heading">{{ housingLocation.name }}</h2>
       <p class="listing-location">{{ housingLocation.city}}, {{housingLocation.state }}</p>
-      <p class="listing-availabl e" >{{ housingLocation.availableUnits}} Unit(s)</p>
+      <p style="padding: 0 0 10px 20px;">{{ housingLocation.availableUnits}} Unit(s)</p> 
       <a [routerLink]="['/details', housingLocation.id]">Learn More</a>
     </section>
   `,
