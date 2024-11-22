@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var housingRouting = require('./app_server/routes/housing');
 
 // load mongodb connection
 require('./app_server/models/db');
@@ -12,6 +13,7 @@ var usersRouter = require('./app_server/routes/users');
 
 // pisah router
 var mhsController = require('./app_server/routes/mahasiswa');
+const { nextTick } = require('process');
 
 var app = express();
 
@@ -27,10 +29,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*"); // allow all domains
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 // daftarkan route mahasiswa
 app.use('/mahasiswa', mhsController);
+app.use('/housing', housingRouting);  
+
+// letakkan di bawah Use Router
+// app.use("/housing", (req, res, next) => {
+//   res.header("Acces-Control-Allow-Origin", "*");
+//   next();
+// });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
