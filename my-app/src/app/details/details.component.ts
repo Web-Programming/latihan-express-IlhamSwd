@@ -44,7 +44,9 @@ export class DetailsComponent {
   housingService: HousingService = inject(HousingService);
   housingLocation: HousingLocation | undefined;
   applyForm = new FormGroup({
-    firstName : new FormControl('')
+    firstName : new FormControl(''),
+    lastName : new FormControl(''),
+    email : new FormControl('')
   })
 
   constructor() {
@@ -60,4 +62,3 @@ export class DetailsComponent {
   }
 }
 
-  
