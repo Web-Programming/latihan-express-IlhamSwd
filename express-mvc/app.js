@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -7,6 +9,8 @@ var housingRouting = require('./app_server/routes/housing');
 
 // load mongodb connection
 require('./app_server/models/db');
+//load file config
+require("./app_server/configs/passport"); 
 
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
